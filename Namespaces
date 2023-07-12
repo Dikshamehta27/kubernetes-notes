@@ -1,0 +1,37 @@
+namespace is use for group yor resources in k8s cluster
+k8s cluster can have multiple namespaces,these namespaces will be used to set various kinds of securities and few other things to ur resources.
+we have  a default namespace called default
+other namespaces are kube-system,kube-public  when we create the cluster these namespaces gets craeted automatically .
+we can add new namespaces
+no two pods with same name can exist in  same ns
+another ns can have a pod with the same name 
+why and when ns should be use?
+when we have multiple projects and many users or multiple environment then to manage the resources namespace should be created.
+some commands for namespaces are:
+kubectl get ns      #to get namespaces
+kubectl  create ns kubekart   #kubekart is your namespace name
+namespace can be add in defination file of pod e.g
+defination file of a pod:
+apiVersion: v1
+kind: Pod
+metadata:
+     name: web
+     labels:
+        app: webapp
+     namespace: kubekart
+
+spec:
+     containers:
+      - name: webapp
+        image: docker push dikshamehta/vprofileweb:V3
+        ports:
+              - name: web-port
+                containerPort: 80
+
+then kubectl apply -f poddef.yaml
+
+kubectl get pod -n kubekart 
+#it wil give the pod created by kubekart namespace
+
+kubectl delete ns kubekart   ##it will delete the ns kubekart and all the resources inside in this ns. so  be careful it can be dangerous
+
