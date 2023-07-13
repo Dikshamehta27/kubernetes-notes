@@ -1,3 +1,44 @@
-k8s pods commands:
-create a pod
-kubectl create -f 
+Pod : A pod is the basic execution unit of a k8s application-the smallest and simplest unit in the k8s object model that we create or deploy.
+A pod represents processes running on your cluster.
+
+pods that run a single container:
+the "one container per pod" model is the most common use case in k8s
+pod as a wrapper around  a single container .
+k8s manages the pods rather than container directly.
+
+Multi container Pod:
+Tightly coupled and need to share the resources.
+one main container and other as a sidecar or init container.
+each pod is meant to run a single instance of a given app 
+should use multiple pods to scale horizontly
+
+Defination file of a pod (pod-setup.yaml)
+apiVersion:v1 
+kind: pod
+metadata:
+    name: webapp-pod
+labels:
+    app: frontend
+    project: infinity
+spec:
+    containers:
+        - name: httpd
+          image: copy the image from docker hub
+    ports:
+        - name: httpd port
+          conatainer port: 80
+
+
+now to create this pod run the command:
+kubectl create -f pod-setup.yaml
+
+to get the pods
+kubectl get pod
+
+to get deatils of pod
+kubectl describe pod pod-setup.yaml
+
+to delete the pod 
+kubectl delete pod pod-setup.yaml
+
+
