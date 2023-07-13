@@ -1,0 +1,10 @@
+Service is connect with and to your pod.
+
+It is the way to expose an app running on a set of pods as a network service (similar to load balancer)
+if we want to expose our pod , the app running in the pod as a network service like we want to host nginx or tomcat or even the backend ,
+we need to use service with our pod the service is similar to load balancer like what load balancer does ELB in AWS ,same service will be doing for the pod
+so for the starters,in really not so difficult to understand just like a load balancer and you want to expose your pod communicating with each other ,
+we need service in front of our pod.
+
+WHY SERVICE IS CREATED ? WHY NOT JUST SIMPLE PORT MAPPING?
+
